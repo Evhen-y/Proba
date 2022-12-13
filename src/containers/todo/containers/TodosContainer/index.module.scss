@@ -1,0 +1,6 @@
+@import '../../../../style/index.scss';  
+
+ .styleTest{
+    background: $dark;
+    @include font(30px)
+}
