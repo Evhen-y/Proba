@@ -1,6 +1,6 @@
-import { takeLatest, call, put } from "redux-saga/effects";
+import { takeLatest, call, put, delay } from "redux-saga/effects";
 import { todosActions } from "./actions";
-
+import {TodosActionsType} from "./constants"
 function* fetchTodosSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_TODOS.REQUEST>) {
   try {
     const todos = [
@@ -101,9 +101,11 @@ function* removeTodoSaga({ payload, cb }: ReturnType<typeof todosActions.REMOVE_
   }
 }
 export const todosWatcherSaga = function* () {
-  yield takeLatest(todosActions.FETCH_TODOS.REQUEST, fetchTodosSaga);
-  yield takeLatest(todosActions.FETCH_TODO.REQUEST, fetchTodoSaga);
-  yield takeLatest(todosActions.ADD_TODO.REQUEST, addTodoSaga);
-  yield takeLatest(todosActions.EDIT_TODO.REQUEST, editTodoSaga);
-  yield takeLatest(todosActions.REMOVE_TODO.REQUEST, removeTodoSaga);
+  // @ts-ignore
+  // yield delay (() => todosActions.FETCH_TODOS.REQUEST, fetchTodosSaga); делает задержку отправки запроса
+  yield takeLatest(TodosActionsType.FETCH_TODOS.REQUEST, fetchTodosSaga);
+  yield takeLatest(TodosActionsType.FETCH_TODO.REQUEST, fetchTodoSaga);
+  yield takeLatest(TodosActionsType.ADD_TODO.REQUEST, addTodoSaga);
+  yield takeLatest(TodosActionsType.EDIT_TODO.REQUEST, editTodoSaga);
+  yield takeLatest(TodosActionsType.REMOVE_TODO.REQUEST, removeTodoSaga);
 };
