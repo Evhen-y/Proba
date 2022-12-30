@@ -6,7 +6,6 @@ interface IComponentProps {
 }
 
 const TodosContainer = (props: IComponentProps) => {
-
   return (
     <div className={styles.styleTest}>
       <Header />

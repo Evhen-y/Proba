@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Todo } from "../Todo";
-import {getTodos} from "../../store"
-import {useSelector} from "react-redux"
+import { getTodos } from "../../store";
+import { useSelector } from "react-redux";
 
 // export interface ITodos {
 //   id?: number;
@@ -13,7 +13,7 @@ import {useSelector} from "react-redux"
 //   todos: ITodos[];
 // }
 const Todos = () => {
-  const todos = useSelector(getTodos())
+  const todos = useSelector(getTodos());
   // const [todos, setTodos] = useState<ITodos[]>(
   //     [
   //   {

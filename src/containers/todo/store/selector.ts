@@ -1,7 +1,5 @@
 import { createSelector } from "reselect";
-import { IAppState} from "../../../shared";
-
-
+import { IAppState } from "../../../shared";
 
 const selectTodos = (state: IAppState) => state.todosReduser;
 

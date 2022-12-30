@@ -1,7 +1,7 @@
 import { takeLatest, call, put, delay } from "redux-saga/effects";
 import { todosActions } from "./actions";
-import {TodosActionsType} from "./constants"
-function*   fetchTodosSaga({ payload, cb }: ReturnType<any>) {
+import { TodosActionsType } from "./constants";
+function* fetchTodosSaga({ payload, cb }: ReturnType<any>) {
   try {
     const todos = [
       {
@@ -29,7 +29,7 @@ function*   fetchTodosSaga({ payload, cb }: ReturnType<any>) {
         completed: false,
       },
     ];
-    console.log(todos)
+    console.log(todos);
     yield put(todosActions.FETCH_TODOS.SUCCESS(todos));
   } catch (err) {
     yield put(todosActions.FETCH_TODOS.FAILUR(err as Object));
