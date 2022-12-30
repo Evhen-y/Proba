@@ -106,7 +106,7 @@ function* removeUsersSaga({ payload, cb }: ReturnType<any>) {
 export const usersWatcherSaga = function* () {
   yield takeLatest(UsersActionsType.FETCH_USERS.REQUEST, fetchUsersSaga);
   yield takeLatest(UsersActionsType.FETCH_USER.REQUEST, fetchUserSaga);
-  yield takeLatest(UsersActionsType.EDIT_USERS.REQUEST, editUsersSaga);
-  yield takeLatest(UsersActionsType.ADD_USERS.REQUEST, addUsersSaga);
-  yield takeLatest(UsersActionsType.REMOVE_USERS.REQUEST, removeUsersSaga);
+  yield takeLatest(UsersActionsType.EDIT_USER.REQUEST, editUsersSaga);
+  yield takeLatest(UsersActionsType.ADD_USER.REQUEST, addUsersSaga);
+  yield takeLatest(UsersActionsType.REMOVE_USER.REQUEST, removeUsersSaga);
 };

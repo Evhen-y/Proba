@@ -1,13 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { Header, Footer, Filters, Todos, Todo } from "@containers/";
 import styles from "./index.module.scss";
-import { ITodos, ITodosContainer } from "../../components/Todos/Todos";
-import { ThemeConsumer } from "styled-components";
-
 interface IComponentProps {
   children?: React.ReactNode;
 }
+
 const TodosContainer = (props: IComponentProps) => {
+
   return (
     <div className={styles.styleTest}>
       <Header />

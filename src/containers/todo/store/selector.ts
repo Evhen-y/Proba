@@ -1,11 +1,9 @@
 import { createSelector } from "reselect";
-import { ITodosState } from "./interface";
+import { IAppState} from "../../../shared";
 
-interface IAppState {
-  todos: ITodosState;
-}
 
-const selectTodos = (state: IAppState) => state.todos;
+
+const selectTodos = (state: IAppState) => state.todosReduser;
 
 export const getTodos = () => createSelector(selectTodos, (state) => state.todos);
 export const getTodo = () => createSelector(selectTodos, (state) => state.todo);

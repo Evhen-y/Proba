@@ -1,7 +1,7 @@
 import { takeLatest, call, put, delay } from "redux-saga/effects";
 import { todosActions } from "./actions";
 import {TodosActionsType} from "./constants"
-function* fetchTodosSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_TODOS.REQUEST>) {
+function*   fetchTodosSaga({ payload, cb }: ReturnType<any>) {
   try {
     const todos = [
       {
@@ -17,19 +17,20 @@ function* fetchTodosSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_T
         completed: false,
       },
       {
-        id: 1,
+        id: 55,
         title: "Todods 0011111111111111111111111111111111111111111111111111111111111111111111",
         createAt: new Date(),
         completed: false,
       },
       {
-        id: 1,
+        id: 556,
         title: "Todods 001",
         createAt: new Date(),
         completed: false,
       },
     ];
-    yield put(todosActions.FETCH_TODOS.SECCESS(todos));
+    console.log(todos)
+    yield put(todosActions.FETCH_TODOS.SUCCESS(todos));
   } catch (err) {
     yield put(todosActions.FETCH_TODOS.FAILUR(err as Object));
   } finally {
@@ -37,7 +38,7 @@ function* fetchTodosSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_T
   }
 }
 
-function* fetchTodoSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_TODO.REQUEST>) {
+function* fetchTodoSaga({ payload, cb }: ReturnType<any>) {
   try {
     const todo = [
       {
@@ -47,7 +48,7 @@ function* fetchTodoSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_TO
         completed: false,
       },
     ];
-    yield put(todosActions.FETCH_TODO.SECCESS(todo));
+    yield put(todosActions.FETCH_TODO.SUCCESS(todo));
   } catch (err) {
     yield put(todosActions.FETCH_TODO.FAILUR(err as Object));
   } finally {
@@ -55,7 +56,7 @@ function* fetchTodoSaga({ payload, cb }: ReturnType<typeof todosActions.FETCH_TO
   }
 }
 
-function* addTodoSaga({ payload, cb }: ReturnType<typeof todosActions.ADD_TODO.REQUEST>) {
+function* addTodoSaga({ payload, cb }: ReturnType<any>) {
   try {
     const newTodo = [
       {
@@ -65,7 +66,7 @@ function* addTodoSaga({ payload, cb }: ReturnType<typeof todosActions.ADD_TODO.R
         completed: false,
       },
     ];
-    yield put(todosActions.ADD_TODO.SECCESS(newTodo));
+    yield put(todosActions.ADD_TODO.SUCCESS(newTodo));
   } catch (err) {
     yield put(todosActions.ADD_TODO.FAILUR(err as Object));
   } finally {
@@ -73,7 +74,7 @@ function* addTodoSaga({ payload, cb }: ReturnType<typeof todosActions.ADD_TODO.R
   }
 }
 
-function* editTodoSaga({ payload, cb }: ReturnType<typeof todosActions.EDIT_TODO.REQUEST>) {
+function* editTodoSaga({ payload, cb }: ReturnType<any>) {
   try {
     const updateTodo = [
       {
@@ -83,7 +84,7 @@ function* editTodoSaga({ payload, cb }: ReturnType<typeof todosActions.EDIT_TODO
         completed: false,
       },
     ];
-    yield put(todosActions.EDIT_TODO.SECCESS(updateTodo));
+    yield put(todosActions.EDIT_TODO.SUCCESS(updateTodo));
   } catch (err) {
     yield put(todosActions.EDIT_TODO.FAILUR(err as Object));
   } finally {
@@ -91,9 +92,9 @@ function* editTodoSaga({ payload, cb }: ReturnType<typeof todosActions.EDIT_TODO
   }
 }
 
-function* removeTodoSaga({ payload, cb }: ReturnType<typeof todosActions.REMOVE_TODO.REQUEST>) {
+function* removeTodoSaga({ payload, cb }: ReturnType<any>) {
   try {
-    yield put(todosActions.REMOVE_TODO.SECCESS(payload));
+    yield put(todosActions.REMOVE_TODO.SUCCESS(payload));
   } catch (err) {
     yield put(todosActions.REMOVE_TODO.FAILUR(err as Object));
   } finally {

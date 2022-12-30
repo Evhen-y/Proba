@@ -15,9 +15,11 @@ export const todosReduser: IReduser<ITodosState> = (state: ITodosState = inition
     case TodosActionsType.EDIT_TODO.REQUEST:
     case TodosActionsType.ADD_TODO.REQUEST:
     case TodosActionsType.REMOVE_TODO.REQUEST:
+      console.log("reduser___Request")
       return { ...state, loading: true };
 
     case TodosActionsType.FETCH_TODOS.SUCCESS:
+      console.log("REDUSER____SECCESS")
       return { ...state, loading: false, todos: action.payload };
 
     case TodosActionsType.FETCH_TODO.SUCCESS:

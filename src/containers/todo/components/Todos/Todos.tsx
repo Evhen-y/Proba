@@ -1,47 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { Todo } from "../Todo";
-export interface ITodos {
-  id?: number;
-  text: string;
-  createAt: Date;
-  completed: boolean;
-}
-export interface ITodosContainer {
-  todos: ITodos[];
-}
-const Todos = () => {
-  const [todos, setTodos] = useState<ITodos[]>([
-    {
-      id: 1,
-      text: "text 001",
-      createAt: new Date(),
-      completed: false,
-    },
-  ]);
+import {getTodos} from "../../store"
+import {useSelector} from "react-redux"
 
-  useEffect(() => {
-    setTodos((state) =>
-      state.concat([
-        {
-          id: 1,
-          text: "text 002",
-          createAt: new Date(),
-          completed: false,
-        },
-        {
-          id: 1,
-          text: "text 003",
-          createAt: new Date(),
-          completed: false,
-        },
-      ]),
-    );
-  }, []);
+// export interface ITodos {
+//   id?: number;
+//   title: string;
+//   createAt: Date;
+//   completed: boolean;
+// }
+// export interface ITodosContainer {
+//   todos: ITodos[];
+// }
+const Todos = () => {
+  const todos = useSelector(getTodos())
+  // const [todos, setTodos] = useState<ITodos[]>(
+  //     [
+  //   {
+  //     id: 1,
+  //     title: "text 001",
+  //     createAt: new Date(),
+  //     completed: false,
+  //   },
+  // ]
+  // );
+
+  // useEffect(() => {
+  //   setTodos((state) =>
+  //     state.concat(
+  //         [
+  //       {
+  //         id: 1,
+  //         title: "text 002",
+  //         createAt: new Date(),
+  //         completed: false,
+  //       },
+  //       {
+  //         id: 1,
+  //         title: "text 003",
+  //         createAt: new Date(),
+  //         completed: false,
+  //       },
+  //     ]
+  //     ),
+  //   );
+  // }, []);
   return (
     <>
-      {todos?.map(({ id, text }) => (
+      {todos?.map(({ id, title }) => (
         <React.Fragment key={id}>
-          <Todo text={text} id={id} />
+          <Todo title={title} id={id} />
         </React.Fragment>
       ))}
     </>

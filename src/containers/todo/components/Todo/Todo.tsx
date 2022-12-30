@@ -1,6 +1,6 @@
 import React from "react";
-import { ITodos } from "../Todos/Todos";
+import { ITodo } from "../../store/interface";
 
-const Todo = ({ id, text }: Partial<ITodos>) => <div key={id}>{text}</div>;
+const Todo = ({ id, title }: Partial<ITodo>) => <div key={id}>{title}</div>;
 
 export default Todo;
