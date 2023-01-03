@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 // import { resolve } from 'url';
-import { todosActions, TodosContainer, UsersContaiter } from "./containers";
+import {todosActions, TodosContainer, usersActions, UsersContaiter} from "./containers";
 import { useDispatch } from "react-redux";
 import { Switch, Route, Redirect } from "react-router";
 import { routerAssessor, publicRouter, privateRouter, ROUTER_PATH } from "./router";
 import { Main } from "./shared";
 
 const App = () => {
-  // const dispatch = useDispatch()
-  // useEffect(()=>{
-  //     dispatch(todosActions.FETCH_TODOS.REQUEST({}))
-  // },[])
+  const dispatch = useDispatch()
+  useEffect(()=>{
+      dispatch(todosActions.FETCH_TODOS.REQUEST({}))
+      dispatch(usersActions.FETCH_USERS.REQUEST({}))
+  },[])
   return (
     <Switch>
       {publicRouter.map((rout) => routerAssessor(null, rout))}.

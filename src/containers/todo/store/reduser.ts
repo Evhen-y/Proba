@@ -1,12 +1,19 @@
 import { Reducer as IReduser } from "redux";
 import { TodosActionsType } from "./constants";
 import { ITodosState } from "./interface";
+import {EOrder} from '../store/interface'
 
 const initionState: ITodosState = {
   todos: [],
   loading: false,
   error: null,
   todo: null,
+  filterSettings: {
+    sortBy: "createAt",
+    search: "",
+    order: EOrder.ASC,
+
+  },
 };
 export const todosReduser: IReduser<ITodosState> = (state: ITodosState = initionState, action) => {
   switch (action.type) {
@@ -37,6 +44,9 @@ export const todosReduser: IReduser<ITodosState> = (state: ITodosState = inition
 
     case TodosActionsType.REMOVE_TODO.SUCCESS:
       return { ...state, loading: false, todos: [...state.todos].filter((todo) => todo.id !== action.payload) };
+
+    case TodosActionsType.TODO_FILTER.REQUEST:
+      return { ...state, filterSettings: { ...state.filterSettings, search: action.payload.search } };
 
     case TodosActionsType.FETCH_TODOS.FAILURE:
     case TodosActionsType.FETCH_TODO.FAILURE:

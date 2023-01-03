@@ -1,3 +1,8 @@
+
+ enum EOrder{
+    ASC= "ASC",
+    DESC= "DESC",
+}
 export interface IUser {
   id?: number;
   name: string;
@@ -8,16 +13,18 @@ export interface IUser {
   isActive: boolean;
 }
 
-// export interface IUserFilterSettings {
-//     sortBy: keyof IUser;
-//     search: string;
-//     order: EOrder;
-// }
+export interface IUserFilterSettings {
+    search: string;
+    order: EOrder;
+    sortBy: keyof IUser;
+    limit: number;
+    skip: number;
+}
 
 export interface IUsersState {
   users: IUser[];
   error: null | string;
   loading: boolean;
   user: IUser | null;
-  // userFilterSettings: IUserFilterSettings;
+  userFilterSettings: IUserFilterSettings;
 }
